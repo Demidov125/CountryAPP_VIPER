@@ -24,10 +24,6 @@ class CollectionViewCell: UICollectionViewCell {
     
     private func setup() {
         contentView.addSubview(flagImage)
-        layer.shadowRadius = 4
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 7, height: 15)
-        clipsToBounds = false
         
         NSLayoutConstraint.activate([
             flagImage.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -38,6 +34,10 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
+        layer.shadowRadius = 4
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 7, height: 15)
+        clipsToBounds = false
     }
     
     override func prepareForReuse() {
