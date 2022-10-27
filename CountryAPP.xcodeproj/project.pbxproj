@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		182D30FB290ABEB400891ABB /* Extension + Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D30FA290ABEB400891ABB /* Extension + Formater.swift */; };
+		182D30FB290ABEB400891ABB /* Formatter+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D30FA290ABEB400891ABB /* Formatter+Separator.swift */; };
 		18B921462908453F009766C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B921452908453F009766C8 /* AppDelegate.swift */; };
 		18B921482908453F009766C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B921472908453F009766C8 /* SceneDelegate.swift */; };
 		18B9214A2908453F009766C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B921492908453F009766C8 /* ViewController.swift */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		182D30FA290ABEB400891ABB /* Extension + Formater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Formater.swift"; sourceTree = "<group>"; };
+		182D30FA290ABEB400891ABB /* Formatter+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Separator.swift"; sourceTree = "<group>"; };
 		18B921422908453F009766C8 /* CountryAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B921452908453F009766C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B921472908453F009766C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		182D30F9290ABE2300891ABB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				182D30FA290ABEB400891ABB /* Extension + Formater.swift */,
+				182D30FA290ABEB400891ABB /* Formatter+Separator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,7 +214,7 @@
 				18B921462908453F009766C8 /* AppDelegate.swift in Sources */,
 				18B9215A29084F9E009766C8 /* CollectionViewCell.swift in Sources */,
 				18B9215C29088729009766C8 /* Country.swift in Sources */,
-				182D30FB290ABEB400891ABB /* Extension + Formater.swift in Sources */,
+				182D30FB290ABEB400891ABB /* Formatter+Separator.swift in Sources */,
 				18B921482908453F009766C8 /* SceneDelegate.swift in Sources */,
 				18B921602909CFBF009766C8 /* DetailVC.swift in Sources */,
 			);

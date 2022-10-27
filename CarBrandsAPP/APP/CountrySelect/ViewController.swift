@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30)!]
         
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: 100, height: 100)
         
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)

@@ -9,12 +9,12 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     var flagImage: UIImageView = {
-    let view = UIImageView()
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleToFill
         view.layer.cornerRadius = 9
         view.clipsToBounds = true
-    return view
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -47,5 +47,5 @@ class CollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    }
-    
+}
+
