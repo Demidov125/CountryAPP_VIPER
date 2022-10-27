@@ -58,7 +58,7 @@
 		18B921392908453F009766C8 = {
 			isa = PBXGroup;
 			children = (
-				18B921442908453F009766C8 /* CarBrandsAPP */,
+				18B921442908453F009766C8 /* CountryAPP */,
 				18B921432908453F009766C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +71,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		18B921442908453F009766C8 /* CarBrandsAPP */ = {
+		18B921442908453F009766C8 /* CountryAPP */ = {
 			isa = PBXGroup;
 			children = (
 				182D30F9290ABE2300891ABB /* Extensions */,
@@ -80,7 +80,7 @@
 				18B921642909EB30009766C8 /* APP */,
 				18B921672909EB7C009766C8 /* Supporting files */,
 			);
-			path = CarBrandsAPP;
+			path = CountryAPP;
 			sourceTree = "<group>";
 		};
 		18B921612909EAF7009766C8 /* Data */ = {
@@ -365,7 +365,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M387Q9X42G;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CarBrandsAPP/Supporting files/Info.plist";
+				INFOPLIST_FILE = "CountryAPP/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -397,7 +397,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M387Q9X42G;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CarBrandsAPP/Supporting files/Info.plist";
+				INFOPLIST_FILE = "CountryAPP/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
