@@ -28,9 +28,9 @@ class ViewController: UIViewController {
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
        
         adapter.setup(for: collectionView)
-        adapter.viewController = self
-        
         view.addSubview(collectionView)
+        
+        adapter.viewController = self
     }
 }
 
