@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var collectionView: UICollectionView!
-    private var adapter: Adapter!
+    private var adapter = Adapter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     }
     
     private func setup()  {
-        adapter = Adapter(vc: self)
+        adapter.viewController = self
+        
         navigationItem.title = "Угадай страну"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30)!]
         

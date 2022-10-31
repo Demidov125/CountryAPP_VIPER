@@ -12,10 +12,6 @@ class Adapter: NSObject {
     var data = CountryData.getData()
     weak var viewController: ViewController?
     
-    init(vc: ViewController) {
-        viewController = vc
-    }
-    
     func setup(for collectionView: UICollectionView) {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
