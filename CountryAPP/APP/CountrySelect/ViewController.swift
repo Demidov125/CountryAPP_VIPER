@@ -18,8 +18,6 @@ class ViewController: UIViewController {
     }
     
     private func setup()  {
-        adapter.viewController = self
-        
         navigationItem.title = "Угадай страну"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30)!]
         
@@ -28,9 +26,10 @@ class ViewController: UIViewController {
         layout.itemSize = CGSize(width: 100, height: 100)
         
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: adapter.identifier)
        
         adapter.setup(for: collectionView)
+        adapter.viewController = self
+        
         view.addSubview(collectionView)
     }
 }

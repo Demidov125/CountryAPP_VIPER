@@ -60,7 +60,6 @@
 		18B921392908453F009766C8 = {
 			isa = PBXGroup;
 			children = (
-				186ACA09290FD288001789C2 /* Adapter.swift */,
 				18B921442908453F009766C8 /* CountryAPP */,
 				18B921432908453F009766C8 /* Products */,
 			);
@@ -114,6 +113,7 @@
 		18B921652909EB40009766C8 /* CountrySelect */ = {
 			isa = PBXGroup;
 			children = (
+				186ACA09290FD288001789C2 /* Adapter.swift */,
 				18B921492908453F009766C8 /* ViewController.swift */,
 				18B9215929084F9E009766C8 /* CollectionViewCell.swift */,
 			);

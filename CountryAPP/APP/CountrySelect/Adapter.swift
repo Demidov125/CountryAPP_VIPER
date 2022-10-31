@@ -13,6 +13,7 @@ class Adapter: NSObject {
     weak var viewController: ViewController?
     
     func setup(for collectionView: UICollectionView) {
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: identifier)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
