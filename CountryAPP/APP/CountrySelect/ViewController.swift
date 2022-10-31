@@ -9,9 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let identifier = "cell"
-    private let data = CountryData.getData()
     private var collectionView: UICollectionView!
+    private var adapter: Adapter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +18,7 @@ class ViewController: UIViewController {
     }
     
     private func setup()  {
+        adapter = Adapter(vc: self)
         navigationItem.title = "Угадай страну"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30)!]
         
@@ -27,33 +27,10 @@ class ViewController: UIViewController {
         layout.itemSize = CGSize(width: 100, height: 100)
         
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: identifier)
-        
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: adapter.identifier)
+       
+        adapter.setup(for: collectionView)
         view.addSubview(collectionView)
-    }
-}
-
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! CollectionViewCell
-        cell.flagImage.image = UIImage(named: data[indexPath.item].countryName)
-        return cell
-    }
-}
-
-extension ViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let VC = DetailVC()
-        VC.country = data[indexPath.item]
-        navigationController?.present(VC, animated: true)
     }
 }
 

@@ -22,6 +22,10 @@ class CollectionViewCell: UICollectionViewCell {
         setup()
     }
     
+    func update(from country: Country) {
+        flagImage.image = UIImage(named: country.countryName)
+    }
+    
     private func setup() {
         contentView.addSubview(flagImage)
         
@@ -32,6 +36,7 @@ class CollectionViewCell: UICollectionViewCell {
             flagImage.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
+    
     
     override func layoutSubviews() {
         layer.shadowRadius = 4

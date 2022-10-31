@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		182D30FB290ABEB400891ABB /* Formatter+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D30FA290ABEB400891ABB /* Formatter+Separator.swift */; };
+		186ACA0A290FD288001789C2 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACA09290FD288001789C2 /* Adapter.swift */; };
 		18B921462908453F009766C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B921452908453F009766C8 /* AppDelegate.swift */; };
 		18B921482908453F009766C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B921472908453F009766C8 /* SceneDelegate.swift */; };
 		18B9214A2908453F009766C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B921492908453F009766C8 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		182D30FA290ABEB400891ABB /* Formatter+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Separator.swift"; sourceTree = "<group>"; };
+		186ACA09290FD288001789C2 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		18B921422908453F009766C8 /* CountryAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B921452908453F009766C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B921472908453F009766C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		18B921392908453F009766C8 = {
 			isa = PBXGroup;
 			children = (
+				186ACA09290FD288001789C2 /* Adapter.swift */,
 				18B921442908453F009766C8 /* CountryAPP */,
 				18B921432908453F009766C8 /* Products */,
 			);
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B9214A2908453F009766C8 /* ViewController.swift in Sources */,
+				186ACA0A290FD288001789C2 /* Adapter.swift in Sources */,
 				18B9215E2909B414009766C8 /* Data.swift in Sources */,
 				18B921462908453F009766C8 /* AppDelegate.swift in Sources */,
 				18B9215A29084F9E009766C8 /* CollectionViewCell.swift in Sources */,
