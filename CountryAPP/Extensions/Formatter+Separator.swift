@@ -6,7 +6,7 @@
 //
 
 
-import Foundation
+import UIKit
 
 extension Formatter {
     /// Формат для для разделения числовых значений 

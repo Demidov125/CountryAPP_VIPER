@@ -22,8 +22,28 @@ class CollectionViewCell: UICollectionViewCell {
         setup()
     }
     
-    func update(from country: Country) {
-        flagImage.image = UIImage(named: country.countryName)
+    func update(_ name: String) {
+        let names = name.lowercased()
+        guard let url = URL(string: "https://img.geonames.org/flags/x/\(names).gif") else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let response = response {
+                print(response)
+            }
+            
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.flagImage.image = image
+                }
+            }
+        }.resume()
     }
     
     private func setup() {

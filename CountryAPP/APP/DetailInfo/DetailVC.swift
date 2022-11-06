@@ -20,7 +20,7 @@ class DetailVC: UIViewController {
     
     private let countryLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.font = label.font.withSize(50)
         label.tintColor = .black
         label.textAlignment = .center
@@ -30,7 +30,7 @@ class DetailVC: UIViewController {
     let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
+        label.lineBreakMode = .byClipping
         label.font = label.font.withSize(20)
         label.tintColor = .black
         label.textAlignment = .center
@@ -63,10 +63,29 @@ class DetailVC: UIViewController {
         
         view.backgroundColor = .systemGray5
         
-        countryImage.image = UIImage(named: country.countryName)
+        let names = country.countryCode!.lowercased()
+        guard let url = URL(string: "https://img.geonames.org/flags/x/\(names).gif") else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            if let response = response {
+                print(response)
+            }
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.countryImage.image = image
+                }
+            }
+        }.resume()
+        
         countryLabel.text = country.countryName
         textLabel.text = "Численность населения:"
-        populationCount.text = "\(country.countryPopulation.formattedWithSeparator) чел."
+        populationCount.text = "\(Int(country.population!)!.formattedWithSeparator) чел."
     }
     
     private func layoutSetup() {
@@ -77,7 +96,8 @@ class DetailVC: UIViewController {
             countryImage.heightAnchor.constraint(equalTo: countryImage.widthAnchor, multiplier: 0.66),
             
             countryLabel.topAnchor.constraint(equalTo: countryImage.bottomAnchor, constant: 16),
-            countryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            countryLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+            countryLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
             
             textLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 16),
             textLabel.leadingAnchor.constraint(equalTo: countryImage.leadingAnchor),

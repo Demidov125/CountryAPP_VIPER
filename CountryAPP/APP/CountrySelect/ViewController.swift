@@ -11,9 +11,11 @@ class ViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var adapter = Adapter()
+    var countrys: [Country] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reload()
         setup()
     }
     
@@ -31,6 +33,27 @@ class ViewController: UIViewController {
         view.addSubview(collectionView)
         
         adapter.viewController = self
+    }
+}
+
+extension ViewController {
+    func reload() {
+        guard let url = URL(string: "http://api.geonames.org/countryInfoJSON?formatted=true&lang=ru&username=demidov777&style=full")
+        else {return}
+        
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            guard let data = data else { return }
+            do {
+                let countri = try JSONDecoder().decode(Contryes.self, from: data)
+                self.countrys = countri.geonames
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                print("ok")
+            } catch let error {
+                print(error)
+            }
+        }.resume()
     }
 }
 

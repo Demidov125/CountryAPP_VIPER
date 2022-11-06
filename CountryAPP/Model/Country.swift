@@ -7,7 +7,14 @@
 
 import UIKit
 
-struct Country {
-    let countryName: String
-    let countryPopulation: Int
+struct Country: Decodable {
+    let countryName: String?
+    let population: String?
+    let countryCode: String?
 }
+
+struct Contryes: Decodable {
+    let geonames: [Country]
+}
+
+
