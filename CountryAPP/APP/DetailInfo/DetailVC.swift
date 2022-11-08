@@ -7,7 +7,21 @@
 
 import UIKit
 
+protocol DetailVCInputProtocol: AnyObject {
+    func displayCountryName(with title: String)
+    func displayPopulationInfo(with title: String)
+    func displayCountryImage(with imageData: Data)
+}
+
+protocol DetalVCOutputProtocol: AnyObject {
+    init(view: DetailVCInputProtocol)
+    func showDetails()
+}
+
 class DetailVC: UIViewController {
+    
+    let configurator: DetailConfiguratorInputProtocol = Configurator()
+    var presenter: DetalVCOutputProtocol!
     var country: Country!
     
     private var countryImage: UIImageView = {
@@ -15,6 +29,7 @@ class DetailVC: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 20
         image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -30,10 +45,11 @@ class DetailVC: UIViewController {
     let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.lineBreakMode = .byClipping
+        label.lineBreakMode = .byWordWrapping
         label.font = label.font.withSize(20)
         label.tintColor = .black
         label.textAlignment = .center
+        label.text = "Численность населения:"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -51,44 +67,22 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        layoutSetup()
+        configurator.configure(view: self, country: country )
+        setupUI()
+        setupLayout()
+        presenter.showDetails()
     }
     
-    private func setup() {
+    private func setupUI() {
         view.addSubview(countryImage)
         view.addSubview(countryLabel)
         view.addSubview(textLabel)
         view.addSubview(populationCount)
         
         view.backgroundColor = .systemGray5
-        
-        let names = country.countryCode!.lowercased()
-        guard let url = URL(string: "https://img.geonames.org/flags/x/\(names).gif") else {
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            if let response = response {
-                print(response)
-            }
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.countryImage.image = image
-                }
-            }
-        }.resume()
-        
-        countryLabel.text = country.countryName
-        textLabel.text = "Численность населения:"
-        populationCount.text = "\(Int(country.population!)!.formattedWithSeparator) чел."
     }
     
-    private func layoutSetup() {
+    private func setupLayout() {
         NSLayoutConstraint.activate([
             countryImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             countryImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
@@ -108,6 +102,22 @@ class DetailVC: UIViewController {
             populationCount.trailingAnchor.constraint(equalTo: textLabel.trailingAnchor),
         ])
     }
+}
+
+extension DetailVC: DetailVCInputProtocol {
+    func displayCountryName(with title: String) {
+        countryLabel.text = title
+    }
+    
+    func displayPopulationInfo(with title: String) {
+        populationCount.text = title
+    }
+    
+    func displayCountryImage(with imageData: Data) {
+        countryImage.image = UIImage(data: imageData)
+    }
+    
+    
 }
 
 

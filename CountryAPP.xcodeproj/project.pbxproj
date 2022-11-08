@@ -19,6 +19,11 @@
 		18B9215C29088729009766C8 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9215B29088729009766C8 /* Country.swift */; };
 		18B9215E2909B414009766C8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9215D2909B414009766C8 /* Data.swift */; };
 		18B921602909CFBF009766C8 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9215F2909CFBF009766C8 /* DetailVC.swift */; };
+		18FDFE4D291AE29B00BB5CE2 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDFE4C291AE29B00BB5CE2 /* DetailPresenter.swift */; };
+		18FDFE4F291AE2E100BB5CE2 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDFE4E291AE2E100BB5CE2 /* DetailInteractor.swift */; };
+		18FDFE51291AE2F100BB5CE2 /* DetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDFE50291AE2F100BB5CE2 /* DetailConfigurator.swift */; };
+		18FDFE54291AFE3300BB5CE2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDFE53291AFE3300BB5CE2 /* NetworkManager.swift */; };
+		18FDFE56291AFE5F00BB5CE2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDFE55291AFE5F00BB5CE2 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		18B9215B29088729009766C8 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		18B9215D2909B414009766C8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		18B9215F2909CFBF009766C8 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		18FDFE4C291AE29B00BB5CE2 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		18FDFE4E291AE2E100BB5CE2 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		18FDFE50291AE2F100BB5CE2 /* DetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfigurator.swift; sourceTree = "<group>"; };
+		18FDFE53291AFE3300BB5CE2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		18FDFE55291AFE5F00BB5CE2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +86,11 @@
 		18B921442908453F009766C8 /* CountryAPP */ = {
 			isa = PBXGroup;
 			children = (
-				182D30F9290ABE2300891ABB /* Extensions */,
-				18B921632909EB1E009766C8 /* Model */,
-				18B921612909EAF7009766C8 /* Data */,
 				18B921642909EB30009766C8 /* APP */,
+				18B921632909EB1E009766C8 /* Model */,
+				182D30F9290ABE2300891ABB /* Extensions */,
+				18FDFE52291AFDED00BB5CE2 /* Services */,
+				18B921612909EAF7009766C8 /* Data */,
 				18B921672909EB7C009766C8 /* Supporting files */,
 			);
 			path = CountryAPP;
@@ -124,6 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				18B9215F2909CFBF009766C8 /* DetailVC.swift */,
+				18FDFE4C291AE29B00BB5CE2 /* DetailPresenter.swift */,
+				18FDFE4E291AE2E100BB5CE2 /* DetailInteractor.swift */,
+				18FDFE50291AE2F100BB5CE2 /* DetailConfigurator.swift */,
 			);
 			path = DetailInfo;
 			sourceTree = "<group>";
@@ -139,6 +153,15 @@
 				18B9215329084540009766C8 /* Info.plist */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		18FDFE52291AFDED00BB5CE2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18FDFE53291AFE3300BB5CE2 /* NetworkManager.swift */,
+				18FDFE55291AFE5F00BB5CE2 /* DataManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B9214A2908453F009766C8 /* ViewController.swift in Sources */,
+				18FDFE51291AE2F100BB5CE2 /* DetailConfigurator.swift in Sources */,
+				18FDFE4F291AE2E100BB5CE2 /* DetailInteractor.swift in Sources */,
+				18FDFE56291AFE5F00BB5CE2 /* DataManager.swift in Sources */,
+				18FDFE54291AFE3300BB5CE2 /* NetworkManager.swift in Sources */,
 				186ACA0A290FD288001789C2 /* Adapter.swift in Sources */,
 				18B9215E2909B414009766C8 /* Data.swift in Sources */,
 				18B921462908453F009766C8 /* AppDelegate.swift in Sources */,
@@ -220,6 +247,7 @@
 				18B9215C29088729009766C8 /* Country.swift in Sources */,
 				182D30FB290ABEB400891ABB /* Formatter+Separator.swift in Sources */,
 				18B921482908453F009766C8 /* SceneDelegate.swift in Sources */,
+				18FDFE4D291AE29B00BB5CE2 /* DetailPresenter.swift in Sources */,
 				18B921602909CFBF009766C8 /* DetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
