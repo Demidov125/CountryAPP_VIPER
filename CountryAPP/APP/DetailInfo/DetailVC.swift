@@ -22,7 +22,6 @@ class DetailVC: UIViewController {
     
     let configurator: DetailConfiguratorInputProtocol = Configurator()
     var presenter: DetalVCOutputProtocol!
-    var country: Country!
     
     private var countryImage: UIImageView = {
         let image = UIImageView()
@@ -67,7 +66,6 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(view: self, country: country )
         setupUI()
         setupLayout()
         presenter.showDetails()

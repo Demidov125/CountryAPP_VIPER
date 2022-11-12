@@ -18,9 +18,8 @@ protocol DetailOutputInteractorProtocol: AnyObject {
 
 class DetailInteractor: DetailInputInteractorProtocol {
     
-    
     unowned var presenter: DetailOutputInteractorProtocol
-    var country: Country
+    private let country: Country
     
     required init(presenter: DetailOutputInteractorProtocol, country: Country) {
         self.presenter = presenter
@@ -29,43 +28,17 @@ class DetailInteractor: DetailInputInteractorProtocol {
     
     
     func provideDetail() {
-        DispatchQueue.main.async {
-            guard let index = self.country.countryCode?.lowercased() else { return }
-            let imageData = CountryData.shared.loadImage(index: index)
-            let detailInfo = CountyInfo(
-                countryName: self.country.countryName!,
-                countryPopulation: Int(self.country.population!)!,
-                countryFlagImage: imageData
-            )
+        DispatchQueue.global().async {
+            if let ImageData = ImageManager.shared.fetchImageData(from: self.country.imageURL) {
+                DispatchQueue.main.sync {
+                    let detailInfo = CountyInfo(
+                        countryName: self.country.countryName,
+                        countryPopulation: Int(self.country.population)!,
+                        countryFlagImage: ImageData)
+                    self.presenter.recieveCountryDetail(with: detailInfo)
+                }
+            }
             
-            self.presenter.recieveCountryDetail(with: detailInfo)
         }
     }
 }
-        
-//            guard let index = self.country.countryCode?.lowercased() else { return }
-//            guard let url = URL(string: "https://img.geonames.org/flags/x/\(index).gif") else {
-//                return
-//            }
-//
-//            URLSession.shared.dataTask(with: url) { (data, response, error) in
-//                if let error = error {
-//                    print(error)
-//                    return
-//                }
-//                if let response = response {
-//                    print(response)
-//                }
-//                if let data = data {
-//                    let detailInfo = CountyInfo(
-//                        countryName: self.country.countryName!,
-//                        countryPopulation: Int(self.country.population!)!,
-//                        countryFlagImage: data
-//                    )
-//                    self.presenter.recieveCountryDetail(with: detailInfo)
-//                    }
-//                }.resume()
-//            }
-//    }
-
-

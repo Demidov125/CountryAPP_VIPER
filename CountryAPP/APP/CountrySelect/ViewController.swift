@@ -7,53 +7,78 @@
 
 import UIKit
 
+protocol CountrySelectViewInputProtocol: AnyObject {
+    func reloadData(for section: CountrySectionViewModel)
+}
+
+protocol CountrySelectViewOutputProtocol: AnyObject {
+    init(view: CountrySelectViewInputProtocol)
+    func viewDidLoad()
+    func didTapCell(at indexPath: IndexPath)
+}
+
 class ViewController: UIViewController {
-    
     private var collectionView: UICollectionView!
-    private var adapter = Adapter()
-    var countrys: [Country] = []
+    
+    private var section: ItemPresentable = CountrySectionViewModel()
+    private let configurator: CountrySelectConfiguratorInputProtocol = CountrySelectConfigurator()
+    
+    var presenter: CountrySelectViewOutputProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reload()
-        setup()
+        configurator.configure(with: self)
+        setupNavigationBar()
+        setupCollectionView()
+        presenter.viewDidLoad()
     }
     
-    private func setup()  {
+    private func setupNavigationBar() {
         navigationItem.title = "Угадай страну"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30)!]
-        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 28)!]
+    }
+    
+    private func setupCollectionView()  {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: 100, height: 100)
         
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-       
-        adapter.setup(for: collectionView)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.register(CountryCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+                
         view.addSubview(collectionView)
-        
-        adapter.viewController = self
     }
 }
 
-extension ViewController {
-    func reload() {
-        guard let url = URL(string: "http://api.geonames.org/countryInfoJSON?formatted=true&lang=ru&username=demidov777&style=full")
-        else {return}
-        
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data else { return }
-            do {
-                let countri = try JSONDecoder().decode(Contryes.self, from: data)
-                self.countrys = countri.geonames
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                print("ok")
-            } catch let error {
-                print(error)
-            }
-        }.resume()
+
+extension ViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.section.items.count
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let viewModel = section.items[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.cellIdentifier, for: indexPath) as! CountryCollectionViewCell
+        cell.viewModel = viewModel
+        return cell
+    }
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didTapCell(at: indexPath)
+    }
+}
+
+
+extension ViewController: CountrySelectViewInputProtocol {
+    func reloadData(for section: CountrySectionViewModel) {
+        self.section = section
+        collectionView.reloadData()
     }
 }
 
