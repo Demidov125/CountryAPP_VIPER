@@ -12,10 +12,11 @@ class DataManager {
     static let shared = DataManager()
     
     private var countries: [Country] = []
+    private var images: [CountyImage] = []
     
     private init() {}
     
-    func setCourses(_ countries: [Country]) {
+    func setCountries(_ countries: [Country]) {
         self.countries = countries
     }
     

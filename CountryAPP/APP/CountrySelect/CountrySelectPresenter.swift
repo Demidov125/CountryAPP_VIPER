@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct CountyImage {
+    let countryFlagImage: Data?
+}
+
 class CountrySelectPresenter: CountrySelectViewOutputProtocol {
     
     unowned let view: CountrySelectViewInputProtocol

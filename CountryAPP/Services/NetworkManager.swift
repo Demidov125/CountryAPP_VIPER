@@ -10,7 +10,6 @@ import Foundation
 class NetworkManager {
     
     static let shared = NetworkManager()
-    var countries: [Country] = []
     
     private let api = "http://api.geonames.org/countryInfoJSON?formatted=true&lang=ru&username=demidov777&style=full"
     
@@ -24,12 +23,15 @@ class NetworkManager {
             }
             
             do {
+                print("Start")
                 let decoder = JSONDecoder()
                 let countries = try decoder.decode(Countries.self, from: data)
                 let countryArray = countries.geonames
-                DataManager.shared.setCourses(countryArray)
+                print("Load")
+                DataManager.shared.setCountries(countryArray)
                 DispatchQueue.main.async {
                     completion(countryArray)
+                    print("Finish")
                 }
             } catch let error {
                 print("Error serialization json", error)

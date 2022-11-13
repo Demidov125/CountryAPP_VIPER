@@ -5,16 +5,38 @@
 //  Created by Юрий Демидов on 11.11.2022.
 //
 
-import Foundation
+import UIKit
 
-class ImageManager {
+class ImageManager: UIImageView {
+    
     static let shared = ImageManager()
     
-    private init() {}
-    
-    func fetchImageData(from url: URL?) -> Data? {
-        guard let url = url else { return nil }
-        guard let imageData = try? Data(contentsOf: url) else { return nil }
-        return imageData
+    var task: URLSessionDataTask!
+    var imageCache = NSCache<AnyObject, AnyObject>()
+        
+    func fetchImageData(from url: URL){
+        image = nil
+        
+        if let task = task {
+            task.cancel()
+        }
+        
+        if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
+            self.image = imageFromCache
+            return
+        }
+        
+        task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, let newImage = UIImage(data: data) else {
+                print("Error load")
+                return
+            }
+            
+            self.imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
+            DispatchQueue.main.async {
+                self.image = newImage
+            }
+        }
+        task.resume()
     }
 }

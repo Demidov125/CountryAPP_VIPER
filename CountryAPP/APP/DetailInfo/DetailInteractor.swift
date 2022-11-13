@@ -29,7 +29,7 @@ class DetailInteractor: DetailInputInteractorProtocol {
     
     func provideDetail() {
         DispatchQueue.global().async {
-            if let ImageData = ImageManager.shared.fetchImageData(from: self.country.imageURL) {
+            if let ImageData = try? Data(contentsOf: self.country.imageURL) {
                 DispatchQueue.main.sync {
                     let detailInfo = CountyInfo(
                         countryName: self.country.countryName,
@@ -42,3 +42,4 @@ class DetailInteractor: DetailInputInteractorProtocol {
         }
     }
 }
+    
