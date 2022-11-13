@@ -71,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				182D30FA290ABEB400891ABB /* Formatter+Separator.swift */,
-				18326C43291EDC2800F7151C /* CustomImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -83,6 +82,14 @@
 				18326C41291ED36600F7151C /* CountryCellViewModel.swift */,
 			);
 			path = CountrySelectCell;
+			sourceTree = "<group>";
+		};
+		18326C5129215B4A00F7151C /* CustomImageView */ = {
+			isa = PBXGroup;
+			children = (
+				18326C43291EDC2800F7151C /* CustomImage.swift */,
+			);
+			path = CustomImageView;
 			sourceTree = "<group>";
 		};
 		18B921392908453F009766C8 = {
@@ -105,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				18B921642909EB30009766C8 /* APP */,
+				18326C5129215B4A00F7151C /* CustomImageView */,
 				18B921632909EB1E009766C8 /* Model */,
 				182D30F9290ABE2300891ABB /* Extensions */,
 				18FDFE52291AFDED00BB5CE2 /* Services */,
