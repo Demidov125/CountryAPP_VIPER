@@ -23,7 +23,7 @@ class CustomImage: UIImageView {
             image = imageDataFromCache
             return
         }
-    
+        
         task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 print(error)
@@ -40,7 +40,6 @@ class CustomImage: UIImageView {
                 self.image = newImage
             }
         }
-        
         task.resume()
     }
 }

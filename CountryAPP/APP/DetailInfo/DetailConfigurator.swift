@@ -8,17 +8,15 @@
 import Foundation
 
 protocol DetailConfiguratorInputProtocol {
-    func configure(view: DetailVC, and country: Country)
+    func configure(view: DetailViewController, and country: Country)
 }
 
 class Configurator: DetailConfiguratorInputProtocol {
-    func configure(view: DetailVC, and country: Country) {
+    func configure(view: DetailViewController, and country: Country) {
         let presenter = DetailPresenter(view: view)
         let interactor = DetailInteractor(presenter: presenter, country: country)
         
         view.presenter = presenter
         presenter.interactor = interactor
     }
-    
-    
 }

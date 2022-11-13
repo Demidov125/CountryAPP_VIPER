@@ -28,14 +28,14 @@ class DetailInteractor: DetailInputInteractorProtocol {
     
     
     func provideDetail() {
-                DispatchQueue.main.async {
-                    let detailInfo = CountyInfo(
-                        countryName: self.country.countryName,
-                        countryPopulation: Int(self.country.population)!,
-                        countryFlagURL: self.country.imageURL)
-                    self.presenter.recieveCountryDetail(with: detailInfo)
-                }
-            }
+        DispatchQueue.main.async {
+            let detailInfo = CountyInfo(
+                countryName: self.country.countryName,
+                countryPopulation: Int(self.country.population)!,
+                countryFlagURL: self.country.imageURL)
+            self.presenter.recieveCountryDetail(with: detailInfo)
         }
+    }
+}
 
     

@@ -1,5 +1,5 @@
 //
-//  DetailVC.swift
+//  DetailViewController.swift
 //  CarBrandsAPP
 //
 //  Created by Юрий Демидов on 26.10.2022.
@@ -18,7 +18,7 @@ protocol DetalVCOutputProtocol: AnyObject {
     func showDetails()
 }
 
-class DetailVC: UIViewController {
+class DetailViewController: UIViewController {
     
     let configurator: DetailConfiguratorInputProtocol = Configurator()
     var presenter: DetalVCOutputProtocol!
@@ -102,7 +102,7 @@ class DetailVC: UIViewController {
     }
 }
 
-extension DetailVC: DetailVCInputProtocol {
+extension DetailViewController: DetailVCInputProtocol {
     func displayCountryName(with title: String) {
         countryLabel.text = title
     }
@@ -114,8 +114,6 @@ extension DetailVC: DetailVCInputProtocol {
     func displayCountryImage(with imageData: URL) {
         countryImage.fetchImageData(from: imageData)
     }
-    
-    
 }
 
 

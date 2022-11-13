@@ -7,21 +7,21 @@
 
 
 protocol CountrySelectRouterInputProtocol {
-    init(viewController: ViewController)
+    init(viewController: CountrySelectViewController)
     func openDetailVC(for country: Country)
 }
 
 class CountrySelectRouter: CountrySelectRouterInputProtocol {
    
     
-    unowned let viewController: ViewController
+    unowned let viewController: CountrySelectViewController
     
-    required init(viewController: ViewController) {
+    required init(viewController: CountrySelectViewController) {
         self.viewController = viewController
     }
     
     func openDetailVC(for country: Country) {
-        let detailVC = DetailVC()
+        let detailVC = DetailViewController()
         let configurator: DetailConfiguratorInputProtocol = Configurator()
         configurator.configure(view: detailVC, and: country)
         viewController.navigationController?.present(detailVC, animated: true)

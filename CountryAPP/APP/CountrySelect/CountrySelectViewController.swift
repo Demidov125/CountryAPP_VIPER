@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CountrySelectViewController.swift
 //  CarBrandsAPP
 //
 //  Created by Юрий Демидов on 25.10.2022.
@@ -17,7 +17,7 @@ protocol CountrySelectViewOutputProtocol: AnyObject {
     func didTapCell(at indexPath: IndexPath)
 }
 
-class ViewController: UIViewController {
+class CountrySelectViewController: UIViewController {
     private var collectionView: UICollectionView!
     
     private var section: ItemPresentable = CountrySectionViewModel()
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UICollectionViewDataSource {
+extension CountrySelectViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.section.items.count
@@ -68,14 +68,14 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension CountrySelectViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didTapCell(at: indexPath)
     }
 }
 
 
-extension ViewController: CountrySelectViewInputProtocol {
+extension CountrySelectViewController: CountrySelectViewInputProtocol {
     func reloadData(for section: CountrySectionViewModel) {
         self.section = section
         collectionView.reloadData()
