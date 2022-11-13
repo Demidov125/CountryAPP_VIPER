@@ -63,7 +63,6 @@ extension ViewController: UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let viewModel = section.items[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.cellIdentifier, for: indexPath) as! CountryCollectionViewCell
-        cell.flagImage.image = UIImage()
         cell.viewModel = viewModel
         return cell
     }

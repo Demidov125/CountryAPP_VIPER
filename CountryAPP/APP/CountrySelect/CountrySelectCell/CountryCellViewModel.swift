@@ -9,7 +9,6 @@ import Foundation
 
 protocol CellIdentifiable {
     var cellIdentifier: String { get }
-    var cellHeigh: Int { get }
 }
 
 protocol ItemPresentable {
@@ -17,18 +16,14 @@ protocol ItemPresentable {
 }
 
 class CountryCellViewModel: CellIdentifiable {
-    let image: URL
+    let imageURL: URL
     
     var cellIdentifier: String {
         "cell"
     }
     
-    var cellHeigh: Int {
-        70
-    }
-    
     init(country: Country) {
-        self.image = country.imageURL
+        self.imageURL = country.imageURL
         }
     }
     

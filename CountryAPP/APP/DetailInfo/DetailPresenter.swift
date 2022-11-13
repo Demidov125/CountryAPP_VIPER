@@ -10,7 +10,7 @@ import Foundation
 struct CountyInfo {
     let countryName: String
     let countryPopulation: Int
-    let countryFlagImage: Data?
+    let countryFlagURL: URL
 }
 
 class DetailPresenter: DetalVCOutputProtocol {
@@ -34,7 +34,6 @@ extension DetailPresenter: DetailOutputInteractorProtocol {
         view.displayCountryName(with: countryInfo.countryName)
         view.displayPopulationInfo(with: populationInfo)
         
-        guard let image = countryInfo.countryFlagImage else {return}
-        view.displayCountryImage(with: image)
+        view.displayCountryImage(with: countryInfo.countryFlagURL)
     }
 }
