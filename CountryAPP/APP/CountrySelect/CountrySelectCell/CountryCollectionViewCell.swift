@@ -44,11 +44,11 @@ class CountryCollectionViewCell: UICollectionViewCell, CellModelRepresentable {
     
     func updateView() {
         guard let cellViewModel = viewModel as? CountryCellViewModel else { return }
-        guard let data = ImageManager.shared.fetchImage(from: cellViewModel.imageURL) else {
+        guard let flagImage = ImageManager.shared.fetchImage(from: cellViewModel.imageURL) else {
             return
         }
             DispatchQueue.main.async {
-                self.flagImage.image = UIImage(data: data)
+                self.flagImage.image = UIImage(data: flagImage)
             }
         }
     
