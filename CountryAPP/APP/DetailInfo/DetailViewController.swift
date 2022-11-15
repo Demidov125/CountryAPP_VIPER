@@ -10,7 +10,7 @@ import UIKit
 protocol DetailVCInputProtocol: AnyObject {
     func displayCountryName(with title: String)
     func displayPopulationInfo(with title: String)
-    func displayCountryImage(with imageData: URL)
+    func displayCountryImage(with imageData: Data)
 }
 
 protocol DetalVCOutputProtocol: AnyObject {
@@ -23,8 +23,8 @@ class DetailViewController: UIViewController {
     let configurator: DetailConfiguratorInputProtocol = Configurator()
     var presenter: DetalVCOutputProtocol!
     
-    private var countryImage: CustomImage = {
-        let image = CustomImage()
+    private var countryImage: UIImageView = {
+        let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 20
         image.clipsToBounds = true
@@ -111,8 +111,8 @@ extension DetailViewController: DetailVCInputProtocol {
         populationCount.text = title
     }
     
-    func displayCountryImage(with imageData: URL) {
-        countryImage.fetchImageData(from: imageData)
+    func displayCountryImage(with imageData: Data) {
+        countryImage.image = UIImage(data: imageData) 
     }
 }
 

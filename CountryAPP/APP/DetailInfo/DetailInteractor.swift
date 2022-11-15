@@ -31,8 +31,9 @@ class DetailInteractor: DetailInputInteractorProtocol {
         DispatchQueue.main.async {
             let detailInfo = CountyInfo(
                 countryName: self.country.countryName,
-                countryPopulation: Int(self.country.population)!,
-                countryFlagURL: self.country.imageURL)
+                countryPopulation: Int(self.country.population) ?? 0,
+                countryFlagURL: ImageManager.shared.fetchImage(from: self.country.imageURL))
+            
             self.presenter.recieveCountryDetail(with: detailInfo)
         }
     }

@@ -184,16 +184,64 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "49D09013-B73F-422A-98F8-479D42B223DB"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CountryAPP/Services/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "NetworkManager"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "49D09013-B73F-422A-98F8-479D42B223DB - a68fbd330401fef4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CountryAPP.NetworkManager.fetchData(completion: (Swift.Array&lt;CountryAPP.Country&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CountryAPP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/demidovyg/Documents/CountryAPP/CountryAPP/Services/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "656">
+               </Location>
+               <Location
+                  uuid = "49D09013-B73F-422A-98F8-479D42B223DB - f051d02a4a5c7712"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in CountryAPP.NetworkManager.fetchData(completion: (Swift.Array&lt;CountryAPP.Country&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CountryAPP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/demidovyg/Documents/CountryAPP/CountryAPP/Services/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "1736">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "37197D56-4F16-4B5F-9381-1AFEFDBB6AEB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CountryAPP/Services/ImageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "loadDataFromNetwork(from:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

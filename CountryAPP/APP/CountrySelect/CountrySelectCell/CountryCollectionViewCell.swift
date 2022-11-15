@@ -18,8 +18,8 @@ class CountryCollectionViewCell: UICollectionViewCell, CellModelRepresentable {
         }
     }
     
-    var flagImage: CustomImage = {
-        let view = CustomImage()
+    var flagImage: UIImageView = {
+        let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleToFill
         view.layer.cornerRadius = 9
@@ -44,9 +44,11 @@ class CountryCollectionViewCell: UICollectionViewCell, CellModelRepresentable {
     
     func updateView() {
         guard let cellViewModel = viewModel as? CountryCellViewModel else { return }
+        guard let data = ImageManager.shared.fetchImage(from: cellViewModel.imageURL) else {
+            return
+        }
             DispatchQueue.main.async {
-                self.flagImage.fetchImageData(from: cellViewModel.imageURL)
-                print("Done")
+                self.flagImage.image = UIImage(data: data)
             }
         }
     
@@ -57,7 +59,7 @@ class CountryCollectionViewCell: UICollectionViewCell, CellModelRepresentable {
             flagImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             flagImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             flagImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            flagImage.heightAnchor.constraint(equalToConstant: 70),
+            flagImage.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 }

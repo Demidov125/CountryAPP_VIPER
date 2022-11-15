@@ -16,7 +16,7 @@ protocol ItemPresentable {
 }
 
 class CountryCellViewModel: CellIdentifiable {
-    let imageURL: URL
+    let imageURL: String
     
     var cellIdentifier: String {
         "cell"
