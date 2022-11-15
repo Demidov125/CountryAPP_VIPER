@@ -12,7 +12,7 @@ struct Country: Decodable {
     let population: String
     let countryCode: String
     var imageURL: String {
-        "https://img.geonames.org/flags/x/\(countryCode.lowercased()).gif"
+        return ApiList.flagsImage.rawValue + countryCode.lowercased() + ".gif"
     }
 }
 

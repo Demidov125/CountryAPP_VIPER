@@ -13,7 +13,7 @@ class NetworkManager {
     
     private init() {}
     
-    private var api = ApiList.flags
+    private var api = ApiList.countriesInfo
     
     func fetchData(completion: @escaping (_ countries: [Country]) -> Void) {
         guard let url = URL(string: api.rawValue) else { return }

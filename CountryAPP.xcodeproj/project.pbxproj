@@ -168,10 +168,18 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
-		18FDFE52291AFDED00BB5CE2 /* Services */ = {
+		18C2D2A32924329500A7578C /* API */ = {
 			isa = PBXGroup;
 			children = (
 				18C2D2A02924289D00A7578C /* ApiList.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		18FDFE52291AFDED00BB5CE2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18C2D2A32924329500A7578C /* API */,
 				18FDFE55291AFE5F00BB5CE2 /* DataManager.swift */,
 				18FDFE53291AFE3300BB5CE2 /* NetworkManager.swift */,
 				18C2D29E2924156900A7578C /* ImageManager.swift */,
