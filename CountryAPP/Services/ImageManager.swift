@@ -19,14 +19,13 @@ class ImageManager {
         if let cachedData = getDataFromCache(from: url) {
             return cachedData
         }
-        
         return loadDataFromNetwork(from: url)
     }
+    
+    
+    private func loadDataFromNetwork(from url: URL) -> Data? {
+        var dataImage: Data!
         
-    
-private func loadDataFromNetwork(from url: URL) -> Data? {
-    var dataImage: Data!
-    
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, let response =  response else {
                 print(error?.localizedDescription ?? "Error load")
@@ -37,7 +36,8 @@ private func loadDataFromNetwork(from url: URL) -> Data? {
             dataImage = data
             self.setDataToCache(with: data, response: response)
         }
-    return dataImage
+        
+        return dataImage
     }
     
     private func getDataFromCache(from url: URL) -> Data? {

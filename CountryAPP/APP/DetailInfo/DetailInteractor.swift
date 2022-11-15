@@ -39,4 +39,4 @@ class DetailInteractor: DetailInputInteractorProtocol {
     }
 }
 
-    
+
