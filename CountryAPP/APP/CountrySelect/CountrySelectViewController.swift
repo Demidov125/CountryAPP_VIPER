@@ -36,6 +36,12 @@ class CountrySelectViewController: UIViewController {
     private func setupNavigationBar() {
         navigationItem.title = "Угадай страну"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 28)!]
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск страны"
     }
     
     private func setupCollectionView()  {

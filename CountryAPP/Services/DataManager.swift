@@ -12,7 +12,6 @@ class DataManager {
     static let shared = DataManager()
     
     private var countries: [Country] = []
-    private var images: [CountyImage] = []
     
     private init() {}
     
