@@ -18,10 +18,16 @@ class ImageManager {
     
     func fetchImage(from url: String, completion: @escaping (Data) -> Void) {
         guard let url = URL(string: url) else { return }
-        
-        if let cachedData = getDataFromCache(from: url) {
+   // Получение данных из Кэша
+//        if let cachedData = getDataFromCache(from: url) {
+//            completion(cachedData)
+//            print("Выгружено из кэша")
+//            return
+//        }
+    // Получение данных из UserDefaults
+        if let cachedData = getDataFromUSerDefaults(from: url) {
             completion(cachedData)
-            print("Выгружено из кэша")
+            print("Выгружено из UserDefaults")
             return
         }
         
@@ -40,21 +46,34 @@ class ImageManager {
             
             if let data = data {
                 completion(data)
-                self.setDataToCache(with: data, key: url)
+//                self.setDataToCache(with: data, key: url)
+                self.setDataToUserDefault(with: data, key: url)
             }
         }.resume()
     }
     
 // Кэширование через NSCache
     private func getDataFromCache(from url: URL) -> Data? {
-        if let cacheData = cache.object(forKey: url.description as AnyObject), cacheData as? Data != nil {
+        if let cacheData = cache.object(forKey: url as AnyObject), cacheData as? Data != nil {
             return cacheData as? Data
         }
         return nil
     }
     
     private func setDataToCache(with data: Data, key: URL) {
-        cache.setObject(data as AnyObject, forKey: key.description as AnyObject)
+        cache.setObject(data as AnyObject, forKey: key as AnyObject)
+        print("Сохранено в кэш")
+    }
+// Кэширование через UserDefaults
+    private func getDataFromUSerDefaults(from url: URL) -> Data? {
+        if let cacheData = UserDefaults.standard.object(forKey: url.description), cacheData as? Data != nil {
+            return cacheData as? Data
+        }
+        return nil
+    }
+    
+    private func setDataToUserDefault(with data: Data, key: URL) {
+        UserDefaults.standard.set(data, forKey: key.description)
         print("Сохранено в кэш")
     }
     
