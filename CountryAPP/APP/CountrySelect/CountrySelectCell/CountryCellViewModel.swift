@@ -9,14 +9,17 @@ import Foundation
 
 protocol CellIdentifiable {
     var cellIdentifier: String { get }
+    var country: String { get }
 }
 
 protocol ItemPresentable {
     var items: [CellIdentifiable] { get set }
+    var filteredItems: [CellIdentifiable] { get set }
 }
 
 class CountryCellViewModel: CellIdentifiable {
     let imageURL: String
+    let country: String
     
     var cellIdentifier: String {
         "cell"
@@ -24,9 +27,11 @@ class CountryCellViewModel: CellIdentifiable {
     
     init(country: Country) {
         self.imageURL = country.imageURL
+        self.country = country.countryName
         }
     }
     
     class CountrySectionViewModel: ItemPresentable {
         var items: [CellIdentifiable] = []
+        var filteredItems: [CellIdentifiable] = []
     }

@@ -11,7 +11,8 @@ class DataManager {
     
     static let shared = DataManager()
     
-    private var countries: [Country] = []
+    var countries: [Country] = []
+    var filteredCountries: [Country] = []
     
     private init() {}
     
@@ -21,5 +22,10 @@ class DataManager {
     
     func getCountry(at indexPath: IndexPath) -> Country {
         countries[indexPath.item]
+    }
+    
+    func findIndex(country: String) -> IndexPath {
+        let index = countries.map{$0.countryName}.firstIndex(of: country)!
+        return IndexPath(row: index, section: 0)
     }
 }
